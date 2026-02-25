@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Find kørelejlighed</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Find kørelejlighed</h2>
+
+<form>
+    <label>Fra:</label>
+    <select>
+        <option>Allinge</option>
+        <option>Tejn</option>
+        <option>Gudhjem</option>
+        <option>Svaneke</option>
+        <option>Nexø</option>
+    </select>
+
+    <label>Til:</label>
+    <input type="text" value="Rønne" readonly>
+
+    <label>Dato:</label>
+    <input type="date">
+
+    <button type="submit">Søg ture</button>
+</form>
+
+<section class="results">
+    <div class="card">
+        <p><strong>Allinge → Rønne</strong></p>
+        <p>07:30 | 3 pladser</p>
+        <button>Book</button>
+    </div>
+</section>
+
+</body>
+</html>
