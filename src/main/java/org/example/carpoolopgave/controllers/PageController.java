@@ -8,11 +8,11 @@ public class PageController {
 
     @GetMapping("/book")
     public String book() {
-        return "book";
+        return "bookTrip";
     }
 
     @GetMapping("/create")
     public String create() {
-        return "create";
+        return "createTrip";
     }
 }
