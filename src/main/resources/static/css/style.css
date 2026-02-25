@@ -102,7 +102,7 @@ html, body {
 }
 
 /* ANIMATION: hele billedet flytter sig + zoomer (køre-følelse) */
-@keyframes windshieldDrive{
+/*@keyframes windshieldDrive{
     0%   { transform: translateY(-2%) scale(1.08); }
     100% { transform: translateY(12%) scale(1.16); }
 }
