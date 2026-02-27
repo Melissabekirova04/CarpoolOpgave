@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Find kørelejlighed</title>
@@ -9,32 +9,84 @@
 
 <h2>Find kørelejlighed</h2>
 
-<form>
+<!-- Filter Form -->
+<form action="/book" method="post">
     <label>Fra:</label>
-    <select>
-        <option>Allinge</option>
-        <option>Tejn</option>
-        <option>Gudhjem</option>
-        <option>Svaneke</option>
-        <option>Nexø</option>
+    <select name="from">
+        <option value="">Alle</option>
+        <option th:selected="${from == 'Allinge'}">Allinge</option>
+        <option th:selected="${from == 'Tejn'}">Tejn</option>
+        <option th:selected="${from == 'Gudhjem'}">Gudhjem</option>
+        <option th:selected="${from == 'Svaneke'}">Svaneke</option>
+        <option th:selected="${from == 'Nexø'}">Nexø</option>
+        <option th:selected="${from == 'Rønne'}">Rønne</option>
     </select>
 
     <label>Til:</label>
-    <input type="text" value="Rønne" readonly>
+    <select name="to">
+        <option value="">Alle</option>
+        <option th:selected="${to == 'Rønne'}">Rønne</option>
+        <option th:selected="${to == 'Allinge'}">Allinge</option>
+        <option th:selected="${to == 'Tejn'}">Tejn</option>
+        <option th:selected="${to == 'Gudhjem'}">Gudhjem</option>
+        <option th:selected="${to == 'Svaneke'}">Svaneke</option>
+        <option th:selected="${to == 'Nexø'}">Nexø</option>
+    </select>
 
     <label>Dato:</label>
-    <input type="date">
+    <input type="date" name="date" th:value="${date}">
 
-    <button type="submit">Søg ture</button>
+    <hr>
+    <button type="submit">Find ture</button>
 </form>
 
-<section class="results">
-    <div class="card">
-        <p><strong>Allinge → Rønne</strong></p>
-        <p>07:30 | 3 pladser</p>
-        <button>Book</button>
+<!-- Booking Form -->
+<form action="/bookTrips" method="post">
+    <!-- Seat selection -->
+    <label>Antal pladser (max 12):</label>
+    <input type="number" name="seats" min="1" max="12" value="1" th:value="${seats != null ? seats : 1}">
+
+    <hr>
+
+    <!-- Trip list -->
+    <div th:if="${#lists.isEmpty(trips)}">
+        <p>Ingen ture fundet.</p>
     </div>
-</section>
+
+    <div th:each="trip : ${trips}">
+        <label>
+            <input type="checkbox"
+                   name="tripIds"
+                   th:value="${trip.tripId}"
+                   th:disabled="${trip.seats == 0}" />
+            <strong>
+                <span th:text="${trip.startDestination}"></span> →
+                <span th:text="${trip.endDestination}"></span>
+            </strong>
+            |
+            <span th:text="${trip.date}"></span> |
+            <span th:text="${trip.time}"></span> |
+            <span th:text="${trip.seats}"></span> pladser
+        </label>
+
+        <span th:if="${trip.seats == 0}" style="color:red;">
+            (Fuldt booket)
+        </span>
+        <br><br>
+    </div>
+
+    <button type="submit">Book valgte ture</button>
+</form>
+
+<!-- Error message -->
+<div style="color:red;">
+    <p th:text="${error}"></p>
+</div>
+
+<!-- Success message -->
+<div style="color:green;">
+    <p th:text="${success}"></p>
+</div>
 
 </body>
 </html>

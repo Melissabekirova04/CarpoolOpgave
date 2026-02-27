@@ -10,6 +10,8 @@ public class Trip {
     private String time;
     private int seats;
 
+    public Trip(){}
+
     public Trip(int tripId, String driverName,
                 String startDestination,
                 String endDestination,
