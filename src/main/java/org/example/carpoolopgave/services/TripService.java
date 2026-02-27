@@ -54,7 +54,6 @@ public class TripService {
 
             for (Trip trip : trips) {
 
-                // 🔥 Remove trips with no seats left
                 if (trip.getSeats() > 0) {
 
                     writer.write(

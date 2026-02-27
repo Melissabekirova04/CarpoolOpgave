@@ -31,6 +31,7 @@ public class PageController {
     public String book() {
         return "bookTrip";
     }
+
     @PostMapping("/book")
     public String filterTrips(HttpSession session, Model model,
                               @RequestParam(required = false) String from,
