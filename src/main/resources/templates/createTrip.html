@@ -9,9 +9,9 @@
 
 <h2>Opret kørelejlighed</h2>
 
-<form>
+<form action="/createTrip" method="post">
     <label>Fra:</label>
-    <select>
+    <select name="from">
         <option>Allinge</option>
         <option>Tejn</option>
         <option>Gudhjem</option>
@@ -21,7 +21,7 @@
     </select>
 
     <label>Til:</label>
-    <select>
+    <select name="to">
         <option>Rønne</option>
         <option>Allinge</option>
         <option>Tejn</option>
@@ -31,16 +31,19 @@
     </select>
 
     <label>Dato:</label>
-    <input type="date">
+    <input type="date" name="date">
 
     <label>Tidspunkt:</label>
-    <input type="time">
+    <input type="time" name="time">
 
     <label>Antal pladser:</label>
-    <input type="number" min="1" max="6">
+    <input type="number" min="1" max="6" name="seats">
 
     <button type="submit">Opret tur</button>
 </form>
 
+<div style="color:red;">
+    <p th:text="${error}"></p>
+</div>
 </body>
 </html>
