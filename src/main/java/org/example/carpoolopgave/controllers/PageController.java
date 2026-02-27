@@ -15,4 +15,11 @@ public class PageController {
     public String create() {
         return "createTrip";
     }
+
+    @GetMapping("/menu")
+            public String menu(){
+        return "menu";
+    }
 }
+
+

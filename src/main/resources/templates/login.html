@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Login</h1>
+
+    <!-- Show error message if exists -->
+    <div class="error">
+        <span th:text="${error}"></span>
+    </div>
+
+    <form action="/login" method="post">
+        <label for="userName">Username:</label>
+        <input type="text" id="userName" name="userName" required>
+
+        <label for="userInputPassword">Password:</label>
+        <input type="password" id="userInputPassword" name="userInputPassword" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="/register">Register here</a></p>
+</div>
+</body>
+</html>

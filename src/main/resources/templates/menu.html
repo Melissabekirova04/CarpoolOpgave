@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Welcome, <span th:text="${session.loggedInUser.userName}"></span>!</h1>
+
+    <p>Select an option:</p>
+    <ul>
+        <li><a href="/someFeature">Feature 1</a></li>
+        <li><a href="/anotherFeature">Feature 2</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</div>
+</body>
+</html>
