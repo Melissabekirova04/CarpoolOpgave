@@ -97,7 +97,6 @@ public class PageController {
         return "bookTrip";
     }
 
-
     @GetMapping("/createTrip")
     public String showCreateTripForm(HttpSession session) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
@@ -106,6 +105,7 @@ public class PageController {
         }
         return "createTrip";
     }
+
 
     @PostMapping("/createTrip")
     public String createTrip(@RequestParam String from,

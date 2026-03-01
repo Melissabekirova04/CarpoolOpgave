@@ -78,15 +78,38 @@
     <button type="submit">Book valgte ture</button>
 </form>
 
-<!-- Error message -->
 <div style="color:red;">
     <p th:text="${error}"></p>
 </div>
 
-<!-- Success message -->
-<div style="color:green;">
-    <p th:text="${success}"></p>
+<div th:if="${success}" style="color:green; text-align:center; margin-top:20px;">
+
+    <h3 th:text="${success}"></h3>
+
+    <div id="successGif" style="margin-top:15px;">
+        <div class="tenor-gif-embed"
+             data-postid="6253317051822874865"
+             data-share-method="host"
+             data-aspect-ratio="1.76596"
+             data-width="60%">
+            <a href="https://tenor.com/view/car-gif-6253317051822874865">
+                Car GIF
+            </a>
+        </div>
+    </div>
+
 </div>
+
+<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+<script th:if="${success}">
+    setTimeout(function() {
+        const gif = document.getElementById("successGif");
+        if (gif) {
+            gif.style.display = "none";
+        }
+    }, 5000);
+</script>
 
 </body>
 </html>
